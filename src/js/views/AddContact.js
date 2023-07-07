@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const AddContact = () => {
 	const [contact, setContact] = useState({
@@ -79,7 +79,7 @@ export const AddContact = () => {
 						/>
 					</div>
 					<button type="submit" className="btn btn-primary form-control">
-						save
+						Save
 					</button>
 					<Link className="mt-3 w-100 text-center" to="/">
 						or get back to contacts

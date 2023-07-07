@@ -9,6 +9,13 @@ export const ContactCard = props => {
 		//initialize state here
 	});
 
+	const { actions } = useContext(Context);
+
+	const handleUpdate = () => {
+		props.onUpdate();
+		actions.oneParticularContact(props.id);
+	};
+
 	return (
 		<li className="list-group-item">
 			<div className="row w-100">
@@ -17,7 +24,7 @@ export const ContactCard = props => {
 				</div>
 				<div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
 					<div className=" float-right">
-						<button className="btn">
+						<button className="btn" onClick={handleUpdate}>
 							<i className="fas fa-pencil-alt mr-3" />
 						</button>
 						<button className="btn" onClick={() => props.onDelete(props.id)}>
@@ -57,6 +64,7 @@ export const ContactCard = props => {
 ContactCard.propTypes = {
 	history: PropTypes.object,
 	onDelete: PropTypes.func,
+	onUpdate: PropTypes.func,
 	full_name: PropTypes.string,
 	address: PropTypes.string,
 	email: PropTypes.string,
@@ -69,5 +77,6 @@ ContactCard.propTypes = {
  * your component's properties
  **/
 ContactCard.defaultProps = {
-	onDelete: null
+	onDelete: null,
+	onUpdate: null
 };

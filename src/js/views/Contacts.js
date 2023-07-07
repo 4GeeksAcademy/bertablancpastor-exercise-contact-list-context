@@ -4,9 +4,15 @@ import { Link } from "react-router-dom";
 import { ContactCard } from "../component/ContactCard.js";
 import { Modal } from "../component/Modal";
 import { Context } from "../store/appContext.js";
+import { ModalUpdate } from "../component/ModalUpdate.js";
 
 export const Contacts = () => {
 	const [state, setState] = useState({
+		showModal: false,
+		id: null
+	});
+
+	const [stateUpdate, setStateUpdate] = useState({
 		showModal: false,
 		id: null
 	});
@@ -33,12 +39,14 @@ export const Contacts = () => {
 						{store.contacts.length > 0 ? (
 							store.contacts.map(item => (
 								<ContactCard
+									id={item.id}
 									key={item.id}
 									full_name={item.full_name}
 									address={item.address}
 									phone={item.phone}
 									email={item.email}
 									onDelete={() => setState({ showModal: true, id: item.id })}
+									onUpdate={() => setStateUpdate({ showModal: true })}
 								/>
 							))
 						) : (
@@ -50,6 +58,11 @@ export const Contacts = () => {
 				</div>
 			</div>
 			<Modal show={state.showModal} onClose={() => setState({ showModal: false })} id={state.id} />
+			<ModalUpdate
+				show={stateUpdate.showModal}
+				onClose={() => setStateUpdate({ showModal: false })}
+				// id={stateUpdate.id}
+			/>
 		</div>
 	);
 };

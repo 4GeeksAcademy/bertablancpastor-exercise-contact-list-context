@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
+// import { useNavigate } from "react-router-dom";
 
 export const Modal = props => {
 	// const [state, setState] = useState({
@@ -8,15 +9,15 @@ export const Modal = props => {
 	// });
 	const { actions } = useContext(Context);
 	//Declarar el useNavigate
-	// const navigate = useNavigate()
+	// const navigate = useNavigate();
 
 	const handleDelete = () => {
 		actions.deleteContact(props.id);
 		props.onClose();
-		window.location.reload(); //En la versión actual de REACT se deberia usar el navigate("/"). Se declara fuera de la función con una constante.
+		// navigate("/"); //En la versión actual de REACT se deberia usar el navigate("/"). Se declara fuera de la función con una constante.
 	};
 
-	console.log(props.id);
+	// console.log(props.id);
 
 	return (
 		<div className="modal" tabIndex="-1" role="dialog" style={{ display: props.show ? "inline-block" : "none" }}>
