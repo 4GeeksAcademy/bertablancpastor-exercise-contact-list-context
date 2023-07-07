@@ -7,10 +7,13 @@ export const Modal = props => {
 	// 	//initialize state here
 	// });
 	const { actions } = useContext(Context);
+	//Declarar el useNavigate
+	// const navigate = useNavigate()
 
 	const handleDelete = () => {
 		actions.deleteContact(props.id);
 		props.onClose();
+		window.location.reload(); //En la versión actual de REACT se deberia usar el navigate("/"). Se declara fuera de la función con una constante.
 	};
 
 	console.log(props.id);

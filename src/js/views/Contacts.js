@@ -30,18 +30,22 @@ export const Contacts = () => {
 				</p>
 				<div id="contacts" className="panel-collapse collapse show" aria-expanded="true">
 					<ul className="list-group pull-down" id="contact-list">
-						{store.contacts.length > 0
-							? store.contacts.map(item => (
-									<ContactCard
-										key={item.id}
-										full_name={item.full_name}
-										address={item.address}
-										phone={item.phone}
-										email={item.email}
-										onDelete={() => setState({ showModal: true, id: item.id })}
-									/>
-							  ))
-							: "No tienes contactos todavía"}
+						{store.contacts.length > 0 ? (
+							store.contacts.map(item => (
+								<ContactCard
+									key={item.id}
+									full_name={item.full_name}
+									address={item.address}
+									phone={item.phone}
+									email={item.email}
+									onDelete={() => setState({ showModal: true, id: item.id })}
+								/>
+							))
+						) : (
+							<p className="fs-1 fw-bold text-center">
+								No tienes contactos todavía. Añade un contacto clickando a Add new contact
+							</p>
+						)}
 					</ul>
 				</div>
 			</div>
